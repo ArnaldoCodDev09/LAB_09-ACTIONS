@@ -1,0 +1,22 @@
+name: GitHub Actions demo
+
+run-name: ${{ github.actor }} está ejecutando un pipeline
+
+on: [push]
+
+jobs:
+  saludar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Saludar
+        run: echo "Este job ha sido ejecutado ${{ github.event_name }}"
+
+      - name: Mostrar información
+        run: echo "El nombre de la rama es ${{ github.ref }} y el repositorio es ${{ github.repository }}"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Listar archivos del repositorio
+        run: |
+          ls -la ${{ github.workspace }}
