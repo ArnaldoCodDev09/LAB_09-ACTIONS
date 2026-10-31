@@ -1,6 +1,6 @@
-name: GitHub Actions demo
+name: Sistema de Reserva de Citas Medicas
 
-run-name: ${{ github.actor }} está ejecutando un pipeline
+run-name: ${{ github.actor }} ejecutando pipeline
 
 on: [push]
 
@@ -8,22 +8,39 @@ jobs:
   Validar-Proyecto:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Lint al proyecto con el comando npm lint"
+      - run: echo "Verificar la estructura del sistema de citas medicas"
 
-  Validar-Proyecto-Sonar:
+  Validar-Usuarios:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Analizar el proyecto con SonarQube"
+      - run: echo "Revisar los roles de administrador, medico y paciente"
 
-  Saludar-Hello-World:
+  Validar-Base-Datos:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Este job ha sido ejecutado ${{ github.event_name }}"
-      - run: echo "El nombre de la rama es ${{ github.ref }}"
+      - run: echo "Revisar pacientes, medicos, especialidades y citas"
 
-      - name: Checkout repository
-        uses: actions/checkout@v6
+  Validar-Reservas:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Verificar reservas, modificaciones y cancelaciones de citas"
 
-      - name: Listar los archivos del repositorio
-        run: |
-          ls ${{ github.workspace }}
+  Analizar-Seguridad:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Revisar la proteccion de datos personales de los pacientes"
+
+  Planificar-Despliegue:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Preparar el entorno para desplegar el sistema"
+
+  Entregar-Ambiente:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Publicar el sistema en el ambiente de pruebas"
+
+  Monitorear-Sistema:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Supervisar el funcionamiento y las reservas de citas"
