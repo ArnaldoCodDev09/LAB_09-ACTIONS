@@ -5,18 +5,25 @@ run-name: ${{ github.actor }} está ejecutando un pipeline
 on: [push]
 
 jobs:
+  Validar-Proyecto:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Lint al proyecto con el comando npm lint"
+
+  Validar-Proyecto-Sonar:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Analizar el proyecto con SonarQube"
+
   Saludar-Hello-World:
     runs-on: ubuntu-latest
     steps:
-      - name: Saludar
-        run: echo "Este job ha sido ejecutado ${{ github.event_name }}"
-
-      - name: Mostrar información
-        run: echo "El nombre de la rama es ${{ github.ref }} y el repositorio es ${{ github.repository }}"
+      - run: echo "Este job ha sido ejecutado ${{ github.event_name }}"
+      - run: echo "El nombre de la rama es ${{ github.ref }}"
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Listar archivos del repositorio
+      - name: Listar los archivos del repositorio
         run: |
-          ls -la ${{ github.workspace }}
+          ls ${{ github.workspace }}
